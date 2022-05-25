@@ -1,5 +1,45 @@
 body{
-  background-color: #FBFBFB;
+  background-color: #141417;
+  color: #ffffff;
+}
+
+.container{
+  max-width: 1200px !important;
+}
+
+
+
+.border{
+  border-color: #2B2B30 !important;
+}
+
+a{
+  color: #3199F5 !important;
+}
+
+.bg-dark3{
+  background-color: #19191E !important;
+}
+
+.border-bottom{
+  border-color: #2B2B30 !important;
+}
+
+.border-top{
+  border-color: #2B2B30 !important;
+}
+
+.rt-5{
+  border-top-left-radius: 0.5rem !important;
+  border-top-right-radius: 0.5rem !important;
+}
+
+.bg-dark{
+  background-color: #19191E;
+}
+
+.bg-dark2{
+  background-color: #101012;
 }
 
 .bg-light{
