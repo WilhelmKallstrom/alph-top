@@ -25,6 +25,10 @@ body {
   }
 }
 
+.blaka{
+  font-family: 'Blaka', cursive;
+}
+
 .border {
   border-color: #F0F0F0 !important;
 }
@@ -57,6 +61,14 @@ a {
 .bg-gradient {
   background: rgb(22, 1, 215) !important;
   background: linear-gradient(45deg, rgba(22, 1, 215, 1) 0%, rgba(255, 93, 81, 1) 100%) !important;
+}
+
+.bg-green{
+  background-color: #E5F9F5 !important;
+}
+
+.bg-yellow{
+  background-color: #FFFFF0 !important;
 }
 
 .bg-dark2 {

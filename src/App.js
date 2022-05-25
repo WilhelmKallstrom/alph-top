@@ -51,10 +51,9 @@ function App() {
         <Navbar />
 
         <div className='container'>
+
           <div className='row'>
-
             <div className='col-lg-4'>
-
 
               <div className='container p-3 bg-white rounded-10 mb-3'>
 
@@ -104,7 +103,7 @@ function App() {
         </div>
 
 
-        <div className='container p-3'>
+        <div className='container p-3 pt-5 pb-5'>
           <p className='mb-0'>Made with ❤️ by Wilhelm Källström</p>
         </div>
 
