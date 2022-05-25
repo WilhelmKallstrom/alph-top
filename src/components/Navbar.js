@@ -1,8 +1,8 @@
 function Navbar() {
     return (
-        <nav className="navbar mb-5 bg-gradient align-items-center">
-            <div className="container ">
-                <p className="navbar-brand mb-0 fw-bold">AlphTop✨</p>
+        <nav className="mb-5 text-center">
+            <div className="container pt-5 pb-5">
+                <p className="h3 mb-0 fw-bold">AlphTop - Explore Alephium</p>
             </div>
         </nav>
     )
