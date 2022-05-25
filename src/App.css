@@ -1,0 +1,26 @@
+body{
+  background-color: #FBFBFB;
+}
+
+.bg-light{
+  background-color: #F7F7F7 !important;
+}
+
+.rounded-5{
+  border-radius: .5rem;
+}
+
+
+.scroll-x{
+  overflow-x: scroll !important;
+}
+
+.testimonial-group > .row {
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
+  flex-wrap: nowrap;
+}
+.testimonial-group > .row > .col-6 {
+  display: inline-block;
+}
