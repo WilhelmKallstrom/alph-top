@@ -1,8 +1,8 @@
 function Navbar() {
     return (
-        <nav class="navbar navbar-light bg-white mb-3">
-            <div class="container">
-                <p class="navbar-brand mb-0" href="#">AlphTop - Explore Alephium</p>
+        <nav className="navbar navbar-light bg-white mb-4">
+            <div className="container">
+                <p className="navbar-brand mb-0">AlphTop - Explore Alephium</p>
             </div>
         </nav>
     )

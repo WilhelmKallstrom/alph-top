@@ -52,7 +52,23 @@ function App() {
 
         <div className='container'>
           <div className='row'>
-            <div className='col-lg-8 mb-3'>
+
+            <div className='col-lg-4'>
+
+
+              <div className='container p-3 bg-white rounded-10 mb-3'>
+
+                <p className='fw-bold lead mb-0'>News</p>
+                <p>Latest tweets from the official Alephium Twitter</p>
+
+                <iframe className='rounded-0' title='newsFeed' height="400" width='100%' data-tweet-url="https://twitter.com/alephium" src="data:text/html;charset=utf-8,%3Ca%20class%3D%22twitter-timeline%22%20href%3D%22https%3A//twitter.com/alephium%3Fref_src%3Dtwsrc%255Etfw%22%3ETweets%20by%20alephium%3C/a%3E%0A%3Cscript%20async%20src%3D%22https%3A//platform.twitter.com/widgets.js%22%20charset%3D%22utf-8%22%3E%3C/script%3E%0A"></iframe>
+
+              </div>
+
+            </div>
+
+
+            <div className='col-lg-8 order-sm-first'>
 
               <div className='container p-3 bg-white rounded-10'>
 
@@ -79,19 +95,7 @@ function App() {
 
             </div>
 
-            <div className='col-lg-4'>
 
-
-              <div className='container p-3 bg-white rounded-10'>
-
-                <p className='fw-bold lead mb-0'>News</p>
-                <p>Latest tweets from the official Alephium Twitter</p>
-
-                <iframe className='rounded-0' title='newsFeed' height="400" width='100%' data-tweet-url="https://twitter.com/alephium" src="data:text/html;charset=utf-8,%3Ca%20class%3D%22twitter-timeline%22%20href%3D%22https%3A//twitter.com/alephium%3Fref_src%3Dtwsrc%255Etfw%22%3ETweets%20by%20alephium%3C/a%3E%0A%3Cscript%20async%20src%3D%22https%3A//platform.twitter.com/widgets.js%22%20charset%3D%22utf-8%22%3E%3C/script%3E%0A"></iframe>
-
-              </div>
-
-            </div>
 
 
 
@@ -100,9 +104,9 @@ function App() {
         </div>
 
 
-          <div className='container p-3'>
-            <p className='mb-0'>Made with ❤️ by Wilhelm Källström</p>
-          </div>
+        <div className='container p-3'>
+          <p className='mb-0'>Made with ❤️ by Wilhelm Källström</p>
+        </div>
 
       </div>
 
