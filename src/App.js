@@ -96,7 +96,11 @@ function App() {
   }
 
 
-
+  return (
+    <div className='d-flex justify-content-center align-items-center vh-100'>
+      <p className='h3 spinning'>⌛</p>
+    </div>
+  )
 
 
 }
