@@ -1,80 +1,92 @@
-body{
-  background-color: #141417;
-  color: #ffffff;
+body {
+  background-color: #F6F6F6;
+  color: #000;
 }
 
-.container{
-  max-width: 1200px !important;
+
+.text-lighter{
+  color: #606060 !important;
 }
 
-.spinning{
+.spinning {
   animation-name: spin;
   animation-duration: 2000ms;
   animation-iteration-count: infinite;
-  animation-timing-function: linear; 
+  animation-timing-function: linear;
 }
 
 @keyframes spin {
   from {
-      transform:rotate(0deg);
+    transform: rotate(0deg);
   }
+
   to {
-      transform:rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 
-.border{
-  border-color: #2B2B30 !important;
+.border {
+  border-color: #F0F0F0 !important;
 }
 
-a{
+a {
   color: #3199F5 !important;
 }
 
-.bg-dark3{
-  background-color: #19191E !important;
+.bg-dark3 {
+  background-color: #303030 !important;
 }
 
-.border-bottom{
-  border-color: #2B2B30 !important;
+.border-bottom {
+  border-color: #F0F0F0 !important;
 }
 
-.border-top{
-  border-color: #2B2B30 !important;
+.border-top {
+  border-color: #F0F0F0 !important;
 }
 
-.rt-5{
+.rt-5 {
   border-top-left-radius: 0.5rem !important;
   border-top-right-radius: 0.5rem !important;
 }
 
-.bg-dark{
+.bg-dark {
   background-color: #19191E;
 }
 
-.bg-dark2{
+.bg-gradient {
+  background: rgb(22, 1, 215) !important;
+  background: linear-gradient(45deg, rgba(22, 1, 215, 1) 0%, rgba(255, 93, 81, 1) 100%) !important;
+}
+
+.bg-dark2 {
   background-color: #101012;
 }
 
-.bg-light{
-  background-color: #F7F7F7 !important;
+.bg-light {
+  background-color: #F6F6F6 !important;
 }
 
-.rounded-5{
+.rounded-5 {
   border-radius: .5rem;
 }
 
+.rounded-10 {
+  border-radius: 1rem;
+}
 
-.scroll-x{
+
+.scroll-x {
   overflow-x: scroll !important;
 }
 
-.testimonial-group > .row {
-  display: block;
-  overflow-x: auto;
-  white-space: nowrap;
-  flex-wrap: nowrap;
-}
-.testimonial-group > .row > .col-6 {
-  display: inline-block;
+
+
+
+
+
+
+
+.min-w-300 {
+  min-width: 100px;
 }

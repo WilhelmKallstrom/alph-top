@@ -33,7 +33,7 @@ function App() {
 
   const [isLoading, setLoading] = useState(true);
 
-  fetch('https://alephium.ono.re/api/stats/addresses?top=100')
+  fetch('https://alephium.ono.re/api/stats/addresses?top=5')
     .then(response => response.json())
     .then(data => {
 
@@ -50,45 +50,65 @@ function App() {
       <div>
         <Navbar />
 
+
+
+
         <div className='container pt-5'>
+          <div className='row'>
+            <div className='col-lg-8 mb-3'>
+
+              <div className='container p-3 bg-white rounded-10'>
 
 
-
-          <p className='h3 mb-3'>Top 💯 addresses on the Alephium network</p>
-
-          <div className='container border p-0 rounded-3 bg-dark mb-5 overflow-hidden shadow'>
+                <p className='fw-bold lead'>Top 100 Addresses</p>
 
 
-            <div className="row p-3 ms-0 me-0 border-bottom bg-dark2 rounded-3">
+                <div className='container rounded-3 border p-0'>
 
-              <div className="col-lg-6">
-                <p className='mb-0'>Address</p>
+
+                  {addresses.map((address) => {
+
+                    return (
+                      <AddressBox address={address.address} balanceHint={address.balanceHint} />
+                    )
+
+                  })}
+
+                </div>
+
+
               </div>
 
-              <div className="col-lg-6">
-                <p className='mb-0'>Balance</p>
+            </div>
+
+            <div className='col-lg-4 mb-3'>
+
+
+              <div className='container p-3 bg-white rounded-10'>
+
+                <p className='fw-bold lead mb-0'>News</p>
+                <p>Lates tweets from the official Alephium Twitter</p>
+
+                <iframe className='rounded-0' title='newsFeed' height="400" width='100%' data-tweet-url="https://twitter.com/alephium" src="data:text/html;charset=utf-8,%3Ca%20class%3D%22twitter-timeline%22%20href%3D%22https%3A//twitter.com/alephium%3Fref_src%3Dtwsrc%255Etfw%22%3ETweets%20by%20alephium%3C/a%3E%0A%3Cscript%20async%20src%3D%22https%3A//platform.twitter.com/widgets.js%22%20charset%3D%22utf-8%22%3E%3C/script%3E%0A"></iframe>
+
               </div>
 
             </div>
 
 
-            {addresses.map((address) => {
-
-              return (
-                <AddressBox address={address.address} balanceHint={address.balanceHint} />
-              )
-
-            })}
 
           </div>
+
+
+
         </div>
 
 
-          <div className='container-fluid bg-dark3 border-top'>
-            <div className='container p-3'>
-              <p className='mb-0'>Made with ❤️ by Wilhelm Källström</p>
-            </div>
+        <div className='container-fluid bg-dark3 border-top'>
+          <div className='container p-3'>
+            <p className='mb-0'>Made with ❤️ by Wilhelm Källström</p>
           </div>
+        </div>
 
       </div>
     )
