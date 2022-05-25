@@ -53,7 +53,7 @@ function App() {
 
 
 
-        <div className='container pt-5'>
+        <div className='container'>
           <div className='row'>
             <div className='col-lg-8 mb-3'>
 
@@ -61,7 +61,7 @@ function App() {
 
 
                 <p className='fw-bold lead mb-0'>Top 100 Addresses</p>
-                <p>Addresses with most ALPH on the Alephium network</p>
+                <p>Addresses with most ALPH on the network</p>
 
 
                 <div className='container rounded-3 border-start border-end border-top p-0'>
@@ -104,7 +104,7 @@ function App() {
 
 
           <div className='container p-3'>
-            <p className='mb-0 text-center'>Made with ❤️ by Wilhelm Källström</p>
+            <p className='mb-0'>Made with ❤️ by Wilhelm Källström</p>
           </div>
 
       </div>
