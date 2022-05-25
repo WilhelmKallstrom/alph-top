@@ -50,9 +50,6 @@ function App() {
       <div>
         <Navbar />
 
-
-
-
         <div className='container'>
           <div className='row'>
             <div className='col-lg-8 mb-3'>
