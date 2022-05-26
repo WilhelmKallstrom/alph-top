@@ -3,9 +3,16 @@
 
 function AddressBox(props) {
 
+    const genesisAddresses = props.genesisAddresses.map(function(item) { return item["address"]; });
     const address = props.address;
     const addresHint = props.balanceHint;
     const explorerLink = `https://explorer.alephium.org/#/addresses/${address}`
+    let verifiedAddress = 'Unknown'
+
+    if(genesisAddresses.includes(address)){
+        verifiedAddress = 'Genesis'
+    }
+
 
     return (
         <div className="border-bottom p-3">
@@ -21,7 +28,7 @@ function AddressBox(props) {
                 </div>
 
                 <div className="col-lg-4">
-                    <p className="mb-0"><span className="bg-light rounded-pill ps-2 pe-2">Unknown</span></p>
+                    <p className="mb-0"><span className="bg-green rounded-pill ps-2 pe-2">{verifiedAddress}</span></p>
                 </div>
 
 

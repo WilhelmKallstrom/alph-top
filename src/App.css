@@ -25,9 +25,6 @@ body {
   }
 }
 
-.blaka{
-  font-family: 'Blaka', cursive;
-}
 
 .border {
   border-color: #F0F0F0 !important;
@@ -68,7 +65,7 @@ a {
 }
 
 .bg-yellow{
-  background-color: #FFFFF0 !important;
+  background-color: #FFFFF0  !important;
 }
 
 .bg-dark2 {
