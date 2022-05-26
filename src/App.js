@@ -26,30 +26,22 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
 
+
 let addresses = []
-let genesisAddresses = []
 
 function App() {
 
+  let addressIndex = 0;
   const [isLoading, setLoading] = useState(true);
 
   //Fetch all top 100 blocks
-  fetch('https://alephium.ono.re/api/stats/addresses?top=100')
+  fetch('https://alephium.ono.re/api/stats/addresses?top=200')
     .then(response => response.json())
     .then(data => {
 
       addresses = data.addresses
       //console.log(addresses)
-
-      //Feth all Genesis blocks
-      fetch('https://alephium.ono.re/api/stats/genesis')
-        .then(response => response.json())
-        .then(data => {
-
-          genesisAddresses = data.genesis_addresses
-          setLoading(false)
-
-        })
+      setLoading(false)
 
     })
 
@@ -58,64 +50,37 @@ function App() {
 
     return (
       <div>
-
         <div className='container mt-4'>
-
           <div className='row'>
             <div className='col-lg-4'>
-
               <div className='container p-3 bg-white rounded-10 mb-3'>
-
                 <p className='fw-bold lead mb-0'>News</p>
                 <p>Latest tweets from the official Alephium Twitter</p>
-
                 <iframe className='rounded-0' title='newsFeed' height="300" width='100%' data-tweet-url="https://twitter.com/alephium" src="data:text/html;charset=utf-8,%3Ca%20class%3D%22twitter-timeline%22%20href%3D%22https%3A//twitter.com/alephium%3Fref_src%3Dtwsrc%255Etfw%22%3ETweets%20by%20alephium%3C/a%3E%0A%3Cscript%20async%20src%3D%22https%3A//platform.twitter.com/widgets.js%22%20charset%3D%22utf-8%22%3E%3C/script%3E%0A"></iframe>
-
               </div>
-
             </div>
-
 
             <div className='col-lg-8 order-sm-first'>
-
               <div className='container p-3 bg-white rounded-10'>
-
-
-                <p className='fw-bold lead mb-0'>Top 100 Addresses</p>
+                <p className='fw-bold lead mb-0'>Top 200 Addresses</p>
                 <p className=''>Addresses with most ALPH</p>
-
-
-                <div className='container rounded-3 border-start border-end border-top p-0'>
-
-
+                <div className='container rounded-3 border-start border-end border-top p-0 scroll-y address-container'>
                   {addresses.map((address) => {
 
+                    addressIndex++;
+
                     return (
-                      <AddressBox address={address.address} balanceHint={address.balanceHint} genesisAddresses={genesisAddresses}/>
+                      <AddressBox address={address.address} balanceHint={address.balanceHint} index={addressIndex} />
                     )
-
                   })}
-
                 </div>
-
-
               </div>
-
             </div>
-
-
-
-
-
           </div>
-
         </div>
-
-
         <div className='container p-3 pt-5 pb-5'>
           <p className='mb-0'>Made with ❤️ by Wilhelm Källström</p>
         </div>
-
       </div>
 
     )
@@ -124,8 +89,25 @@ function App() {
 
 
   return (
-    <div className='d-flex justify-content-center align-items-center vh-100'>
-      <p className='h3 spinning'>⌛</p>
+    <div className='container mt-4'>
+      <div className='row'>
+        <div className='col-lg-4'>
+          <div className='container p-3 bg-white rounded-10 mb-3'>
+            <p className='fw-bold lead mb-0'>News</p>
+            <p>Latest tweets from the official Alephium Twitter</p>
+            <div className='twitter-loading rounded-3'></div>
+          </div>
+        </div>
+        <div className='col-lg-8 order-sm-first'>
+          <div className='container p-3 bg-white rounded-10'>
+            <p className='fw-bold lead mb-0'>Top 200 Addresses</p>
+            <p className=''>Addresses with most ALPH</p>
+            <div className='container rounded-3 border-start border-end border-top p-0'>
+              <div className='address-loading rounded-3'></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   )
 

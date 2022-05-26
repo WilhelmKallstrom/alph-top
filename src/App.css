@@ -3,25 +3,30 @@ body {
   color: #000;
 }
 
+.scroll-y{
+  overflow-y: scroll;
+}
 
 .text-lighter{
   color: #606060 !important;
 }
 
-.spinning {
-  animation-name: spin;
-  animation-duration: 2000ms;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
+.address-container{
+  height: 750px;
 }
 
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
+
+@keyframes loading{
+  0%{
+    background-color: #F0F0F0;
   }
 
-  to {
-    transform: rotate(360deg);
+  50%{
+    background-color: #f9f9f9;
+  }
+
+  100%{
+    background-color: #F0F0F0;
   }
 }
 
@@ -36,6 +41,24 @@ a {
 
 .bg-dark3 {
   background-color: #303030 !important;
+}
+
+.twitter-loading{
+  width: 100%;
+  height: 300px;
+  animation-name: loading;
+  animation-duration: 500ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.address-loading{
+width: 100%;
+height: 500px;
+animation-name: loading;
+animation-duration: 500ms;
+animation-iteration-count: infinite;
+animation-timing-function: linear;
 }
 
 .border-bottom {
