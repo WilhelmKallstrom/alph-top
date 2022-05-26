@@ -48,7 +48,7 @@ a {
 }
 
 .w-content{
-  width: fit-content;
+  width: fit-content !important;
 }
 
 .twitter-loading{
