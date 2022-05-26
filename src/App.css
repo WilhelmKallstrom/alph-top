@@ -43,9 +43,24 @@ a {
   background-color: #303030 !important;
 }
 
+.text-transparent{
+  color: rgba(255, 255, 255, 0);
+}
+
+.w-content{
+  width: fit-content;
+}
+
 .twitter-loading{
   width: 100%;
   height: 300px;
+  animation-name: loading;
+  animation-duration: 500ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.bg-loading{
   animation-name: loading;
   animation-duration: 500ms;
   animation-iteration-count: infinite;

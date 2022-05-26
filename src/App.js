@@ -62,7 +62,7 @@ function App() {
 
             <div className='col-lg-8 order-sm-first'>
               <div className='container p-3 bg-white rounded-10'>
-                <p className='fw-bold lead mb-0'>Top 200 Addresses</p>
+                <p className='fw-bold lead mb-0'>Top {addresses.length} Addresses</p>
                 <p className=''>Addresses with most ALPH</p>
                 <div className='container rounded-3 border-start border-end border-top p-0 scroll-y address-container'>
                   {addresses.map((address) => {
@@ -93,15 +93,15 @@ function App() {
       <div className='row'>
         <div className='col-lg-4'>
           <div className='container p-3 bg-white rounded-10 mb-3'>
-            <p className='fw-bold lead mb-0'>News</p>
-            <p>Latest tweets from the official Alephium Twitter</p>
+            <p className='fw-bold lead mb-0 bg-loading text-transparent w-content'>News</p>
+            <p className='bg-loading text-transparent w-content'>Latest tweets from the official Alephium Twitter</p>
             <div className='twitter-loading rounded-3'></div>
           </div>
         </div>
         <div className='col-lg-8 order-sm-first'>
           <div className='container p-3 bg-white rounded-10'>
-            <p className='fw-bold lead mb-0'>Top 200 Addresses</p>
-            <p className=''>Addresses with most ALPH</p>
+            <p className='fw-bold lead mb-0 bg-loading text-transparent w-content'>Top *** Addresses</p>
+            <p className='bg-loading text-transparent w-content'>Addresses with most ALPH</p>
             <div className='container rounded-3 border-start border-end border-top p-0'>
               <div className='address-loading rounded-3'></div>
             </div>
