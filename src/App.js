@@ -35,7 +35,7 @@ function App() {
   const [isLoading, setLoading] = useState(true);
 
   //Fetch all top 100 blocks
-  fetch('https://alephium.ono.re/api/stats/addresses?top=200')
+  fetch('https://alephium.ono.re/api/stats/addresses?top=256')
     .then(response => response.json())
     .then(data => {
 
@@ -79,7 +79,8 @@ function App() {
           </div>
         </div>
         <div className='container p-3 pt-5 pb-5'>
-          <p className='mb-0'>Made with ❤️ by Wilhelm Källström</p>
+          <p className='mb-0'>Made with ❤️ by <a className='text-decoration-none' href='https://github.com/WilhelmKallstrom' target='_blank'>Wilhelm Källström</a></p>
+          <p className='mb-0'>API provided by <a className='text-decoration-none' href='https://github.com/sven-hash/' target='_blank'>Svenhash</a></p>
         </div>
       </div>
 
@@ -95,15 +96,15 @@ function App() {
           <div className='container p-3 bg-white rounded-10 mb-3'>
             <p className='fw-bold lead mb-0 bg-loading text-transparent w-content'>News</p>
             <p className='bg-loading text-transparent w-content'>Latest tweets from the official Alephium Twitter</p>
-            <div className='twitter-loading rounded-3'></div>
+            <div className='twitter-loading'></div>
           </div>
         </div>
         <div className='col-lg-8 order-sm-first'>
           <div className='container p-3 bg-white rounded-10'>
             <p className='fw-bold lead mb-0 bg-loading text-transparent w-content'>Top *** Addresses</p>
             <p className='bg-loading text-transparent w-content'>Addresses with most ALPH</p>
-            <div className='container rounded-3 border-start border-end border-top p-0'>
-              <div className='address-loading rounded-3'></div>
+            <div className='container border-start border-end border-top p-0'>
+              <div className='address-loading'></div>
             </div>
           </div>
         </div>
