@@ -15,7 +15,6 @@ body {
   height: 750px;
 }
 
-
 @keyframes loading{
   0%{
     background-color: #F0F0F0;

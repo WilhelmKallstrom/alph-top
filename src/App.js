@@ -37,16 +37,36 @@ function App() {
   const [isLoading, setLoading] = useState(true);
 
   //Fetch all top 100 blocks
-  fetch('https://alephium.ono.re/api/stats/addresses?top=250')
+  fetch('https://alephium.ono.re/api/stats/addresses?top=256')
     .then(response => response.json())
     .then(data => {
 
-      addresses = data.addresses
+      fetch('https://mainnet-backend.alephium.org/infos/supply/total-alph')
+        .then(response => response.json())
+        .then(data2 => {
 
-      series = addresses.map(a => a.balance).slice(0, 10)
+          let topSum = 0;
+          let othersSum = 0;
+          let totalAlph = 0;
 
-      options.labels = ['#1', '#2','#3','#4','#5','#6','#7','#8', '#9', '#10']
-      setLoading(false)
+          totalAlph = data2
+          addresses = data.addresses
+
+          series = addresses.map(a => a.balance).slice(0, 10)
+
+          series.forEach(element => {
+            topSum += element
+          })
+
+          othersSum = topSum - totalAlph
+
+          series.push(othersSum)
+          options.labels = ['#1', '#2', '#3', '#4', '#5', '#6', '#7', '#8', '#9', '#10', 'others']
+
+          setLoading(false)
+
+
+        })
 
 
     })
@@ -61,7 +81,7 @@ function App() {
             <div className='col-lg-4'>
               <div className='container p-3 bg-white rounded-10 mb-3'>
                 <p className='fw-bold lead mb-0'>Pie Chart</p>
-                <p>Top 10 addresses displayed in a pie chart</p>
+                <p>Top 10 addresses displayed in a pie chart compared to "others"</p>
                 <Chart options={options} series={series} type="pie" width="100%" />
               </div>
             </div>
@@ -100,8 +120,8 @@ function App() {
       <div className='row'>
         <div className='col-lg-4'>
           <div className='container p-3 bg-white rounded-10 mb-3'>
-            <p className='fw-bold lead mb-0 bg-loading text-transparent w-content'>News</p>
-            <p className='bg-loading text-transparent w-content'>Latest tweets from the official Alephium Twitter</p>
+            <p className='fw-bold lead mb-0 bg-loading text-transparent w-content'>Pie Chart</p>
+            <p className='bg-loading text-transparent w-content'>Top 10 addresses displayed in a pie chart compared to "others"</p>
             <div className='twitter-loading'></div>
           </div>
         </div>
