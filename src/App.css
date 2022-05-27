@@ -11,8 +11,12 @@ body {
   color: #606060 !important;
 }
 
+.transparent{
+  opacity: 0;
+}
+
 .address-container{
-  height: 750px;
+  height: 800px;
 }
 
 @keyframes loading{

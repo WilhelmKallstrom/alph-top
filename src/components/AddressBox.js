@@ -102,6 +102,7 @@ function AddressBox(props) {
         "149Jdg4YZ349YkUBJhMmwevdvtJit5F1xadTZ6r4LrAzM"
     ]
 
+
     let address = props.address;
     const name = props.name;
     const addresHint = props.balanceHint;
