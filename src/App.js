@@ -70,7 +70,7 @@ function App() {
                     addressIndex++;
 
                     return (
-                      <AddressBox address={address.address} balanceHint={address.balanceHint} index={addressIndex} />
+                      <AddressBox address={address.address} balanceHint={address.balanceHint} index={addressIndex} name={address.name} />
                     )
                   })}
                 </div>

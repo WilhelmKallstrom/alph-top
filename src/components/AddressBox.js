@@ -103,10 +103,15 @@ function AddressBox(props) {
     ]
 
     let address = props.address;
+    const name = props.name;
     const addresHint = props.balanceHint;
     let index = props.index;
     const explorerLink = `https://explorer.alephium.org/#/addresses/${address}`
     let verifiedAddress = 'Unknown'
+
+    if(name != null){
+        verifiedAddress = name;
+    }
 
     if (genesisAddresses.includes(address)) {
         verifiedAddress = 'Genesis'
@@ -114,6 +119,29 @@ function AddressBox(props) {
 
     //Slicing address (!IMPORTANT TO DO THAT AFTER ALL LOGIC!)
     address = address.slice(0, 15)
+
+    if (verifiedAddress == 'Genesis') {
+
+        return (
+            <div className="border-bottom p-3">
+                <div className="row">
+                    <div className="col-lg">
+                        <p className="mb-0">#{index}</p>
+                    </div>
+                    <div className="col-lg">
+                        <a href={explorerLink} className="mb-0 text-decoration-none">{address}...</a>
+                    </div>
+                    <div className="col-lg">
+                        <p className="mb-0">{addresHint}</p>
+                    </div>
+                    <div className="col-lg">
+                        <p className="mb-0"><span className="bg-purple rounded-pill ps-2 pe-2">{verifiedAddress}</span></p>
+                    </div>
+                </div>
+            </div>
+        )
+
+    }
 
     if (verifiedAddress !== 'Unknown') {
 

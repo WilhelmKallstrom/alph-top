@@ -102,6 +102,10 @@ animation-timing-function: linear;
   background-color: #E5F9F5 !important;
 }
 
+.bg-purple{
+  background-color: #E5E1F5 !important;
+}
+
 .bg-yellow{
   background-color: #FFFFF0  !important;
 }
