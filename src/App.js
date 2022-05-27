@@ -128,23 +128,20 @@ const genesisAddresses = [
   "149Jdg4YZ349YkUBJhMmwevdvtJit5F1xadTZ6r4LrAzM"
 ]
 
-
-
-
-
 let addresses = []
 let series = []
+
 let options = { labels: [] }
 let hideGenesisAddresses = false;
-let totalAlph = 0;
 
 function App() {
 
   const [isLoading, setLoading] = useState(true);
 
   let addressIndex = 0;
-  let topSum = 0;
   let othersSum = 0;
+  let topSum = 0;
+  let totalAlph = 0;
 
   function ToggleGenesisAddresses() {
 
@@ -153,35 +150,32 @@ function App() {
 
   };
 
-  //Fetch all top 100 blocks
   fetch('https://alephium.ono.re/api/stats/addresses?top=356')
     .then(response => response.json())
     .then(data => {
 
-      fetch('https://mainnet-backend.alephium.org/infos/supply/total-alph')
-        .then(response => response.json())
-        .then(data2 => {
-
-          totalAlph = data2
+  
+          totalAlph = data.total_balance
           addresses = data.addresses
 
           series = addresses.map(a => a.balance).slice(0, 10)
+          
+          
+          console.log(series)
 
           series.forEach(element => {
-            topSum += element
+            topSum += element / Math.pow(10,18)
           })
+          
+          othersSum = totalAlph - topSum
 
-          othersSum = othersSum / Math.pow(10, 18)
-
-          othersSum = topSum - totalAlph
-
+         // othersSum = totalAlph - series.reduce((partialSum, a) => partialSum + a, 0)
+          
           series.push(othersSum)
+
           options.labels = ['#1', '#2', '#3', '#4', '#5', '#6', '#7', '#8', '#9', '#10', 'others']
 
           setLoading(false)
-
-
-        })
 
 
     })
