@@ -1,6 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.css'
 import './App.css';
 import { initializeApp } from "firebase/app";
+import Chart from 'react-apexcharts'
 import { getAnalytics } from "firebase/analytics";
 import AddressBox from './components/AddressBox'
 import { useState } from 'react'
@@ -25,7 +26,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
-
+let options = { labels: [] }
+let series = []
 
 let addresses = []
 
@@ -35,13 +37,17 @@ function App() {
   const [isLoading, setLoading] = useState(true);
 
   //Fetch all top 100 blocks
-  fetch('https://alephium.ono.re/api/stats/addresses?top=256')
+  fetch('https://alephium.ono.re/api/stats/addresses?top=250')
     .then(response => response.json())
     .then(data => {
 
       addresses = data.addresses
-      //console.log(addresses)
+
+      series = addresses.map(a => a.balance).slice(0, 10)
+
+      options.labels = ['#1', '#2','#3','#4','#5','#6','#7','#8', '#9', '#10']
       setLoading(false)
+
 
     })
 
@@ -54,9 +60,9 @@ function App() {
           <div className='row'>
             <div className='col-lg-4'>
               <div className='container p-3 bg-white rounded-10 mb-3'>
-                <p className='fw-bold lead mb-0'>News</p>
-                <p>Latest tweets from the official Alephium Twitter</p>
-                <iframe className='rounded-0' title='newsFeed' height="300" width='100%' data-tweet-url="https://twitter.com/alephium" src="data:text/html;charset=utf-8,%3Ca%20class%3D%22twitter-timeline%22%20href%3D%22https%3A//twitter.com/alephium%3Fref_src%3Dtwsrc%255Etfw%22%3ETweets%20by%20alephium%3C/a%3E%0A%3Cscript%20async%20src%3D%22https%3A//platform.twitter.com/widgets.js%22%20charset%3D%22utf-8%22%3E%3C/script%3E%0A"></iframe>
+                <p className='fw-bold lead mb-0'>Pie Chart</p>
+                <p>Top 10 addresses displayed in a pie chart</p>
+                <Chart options={options} series={series} type="pie" width="100%" />
               </div>
             </div>
 

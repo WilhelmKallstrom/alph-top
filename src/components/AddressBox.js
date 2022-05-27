@@ -120,7 +120,7 @@ function AddressBox(props) {
     //Slicing address (!IMPORTANT TO DO THAT AFTER ALL LOGIC!)
     address = address.slice(0, 15)
 
-    if (verifiedAddress == 'Genesis') {
+    if (verifiedAddress === 'Genesis') {
 
         return (
             <div className="border-bottom p-3">
