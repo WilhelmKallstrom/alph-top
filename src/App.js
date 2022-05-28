@@ -131,7 +131,7 @@ const genesisAddresses = [
 let addresses = []
 let series = []
 
-let options = { labels: [] }
+let options = { labels: [], colors:[]}
 let hideGenesisAddresses = false;
 
 function App() {
@@ -139,6 +139,7 @@ function App() {
   const [isLoading, setLoading] = useState(true);
 
   let addressIndex = 0;
+  let chartIndex = 0;
   let othersSum = 0;
   let topSum = 0;
   let totalAlph = 0;
@@ -148,35 +149,78 @@ function App() {
     hideGenesisAddresses = !hideGenesisAddresses;
     setLoading(true)
 
-  };
+  }
+
+  function chunk(arr, len) {
+    var chunks = [];
+    var i = 0;
+    var n = arr.length;
+
+    while (i < n) {
+      chunks.push(arr.slice(i, i += len)); // gives [[0,1,2] [3,4,5]]
+    }
+
+    return chunks;
+  }
 
   fetch('https://alephium.ono.re/api/stats/addresses?top=356')
     .then(response => response.json())
     .then(data => {
 
-  
-          totalAlph = data.total_balance
+      fetch('https://mainnet-backend.alephium.org/infos/supply/total-alph')
+        .then(response => response.json())
+        .then(data2 => {
+
+          series = []
+          totalAlph = data2 * Math.pow(10, 18);
           addresses = data.addresses
 
-          series = addresses.map(a => a.balance).slice(0, 10)
-          
-          
-          console.log(series)
+          if (hideGenesisAddresses) {
 
-          series.forEach(element => {
-            topSum += element / Math.pow(10,18)
+            addresses.forEach(element => {
+
+              if (!genesisAddresses.includes(element.address) && chartIndex < 10) {
+
+                chartIndex++;
+                let nonLockedBalance = element['balance'] - element['locked']
+                series.push(nonLockedBalance)
+                topSum += nonLockedBalance
+              }
+
+            })
+
+          } else {
+
+            addresses.slice(0, 10).forEach(element => {
+              let nonLockedBalance = element['balance'] - element['locked']
+              series.push(nonLockedBalance)
+              topSum += nonLockedBalance
+            })
+
+          }
+
+
+
+
+
+          //New
+          /*
+          addresses.slice(0, 10).forEach(element => {
+            let nonLockedBalance = element['balance'] - element['locked']
+
+            series.push(nonLockedBalance)
+            topSum += nonLockedBalance
           })
-          
-          othersSum = totalAlph - topSum
+          */
 
-         // othersSum = totalAlph - series.reduce((partialSum, a) => partialSum + a, 0)
-          
+
+          othersSum = totalAlph - topSum
           series.push(othersSum)
 
           options.labels = ['#1', '#2', '#3', '#4', '#5', '#6', '#7', '#8', '#9', '#10', 'others']
-
+          options.colors = ['#ff0000', '#ff8000', '#ffff00', '#80ff00', '#00ff00', '#00ff80', '#00ffff', '#0080ff', '#0000ff', '#8000ff', '#ff00ff', '#ff0080']
           setLoading(false)
-
+        })
 
     })
 
@@ -190,7 +234,7 @@ function App() {
             <div className='col-lg-4'>
               <div className='container p-3 bg-white rounded-10 mb-3'>
                 <p className='fw-bold lead mb-0'>Pie Chart</p>
-                <p>Top 10 addresses displayed in a pie chart compared to others "Currently not working, but i'm working on it"</p>
+                <p>Top 10 addresses (without locked balance) displayed compared to all "others" addresses</p>
                 <Chart options={options} series={series} type="pie" width="100%" />
               </div>
             </div>
@@ -262,7 +306,7 @@ function App() {
         <div className='col-lg-4'>
           <div className='container p-3 bg-white rounded-10 mb-3'>
             <p className='fw-bold lead mb-0 bg-loading text-transparent w-content'>Pie Chart</p>
-            <p className='bg-loading text-transparent w-content'>Top 10 addresses displayed in a pie chart compared to "others"</p>
+            <p className='bg-loading text-transparent w-content'>Top 10 addresses (without locked balance) displayed compared to all "others" addresses</p>
             <div className='twitter-loading'></div>
           </div>
         </div>
