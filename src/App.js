@@ -5,6 +5,7 @@ import Chart from 'react-apexcharts'
 import { getAnalytics } from "firebase/analytics";
 import AddressBox from './components/AddressBox'
 import { useState } from 'react'
+import Navbar from './components/Navbar';
 // Import the functions you need from the SDKs you need
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -151,17 +152,7 @@ function App() {
 
   }
 
-  function chunk(arr, len) {
-    var chunks = [];
-    var i = 0;
-    var n = arr.length;
 
-    while (i < n) {
-      chunks.push(arr.slice(i, i += len)); // gives [[0,1,2] [3,4,5]]
-    }
-
-    return chunks;
-  }
 
   fetch('https://alephium.ono.re/api/stats/addresses?top=356')
     .then(response => response.json())
@@ -217,8 +208,8 @@ function App() {
           othersSum = totalAlph - topSum
           series.push(othersSum)
 
-          options.labels = ['#1', '#2', '#3', '#4', '#5', '#6', '#7', '#8', '#9', '#10', 'others']
-          options.colors = ['#ff0000', '#ff8000', '#ffff00', '#80ff00', '#00ff00', '#00ff80', '#00ffff', '#0080ff', '#0000ff', '#8000ff', '#ff00ff', '#ff0080']
+          options.labels = ['#1', '#2', '#3', '#4', '#5', '#6', '#7', '#8', '#9', '#10', 'Others']
+          options.colors = ['#80F4DA', '#89F280', '#F2E880', '#F2E880', '#F28980', '#80DBF2', '#8089F2', '#B580F2', '#F280F2', '#F2803E', '#65ED7E']
           setLoading(false)
         })
 
@@ -229,12 +220,13 @@ function App() {
 
     return (
       <div>
+
         <div className='container mt-4'>
           <div className='row'>
             <div className='col-lg-4'>
               <div className='container p-3 bg-white rounded-10 mb-3'>
                 <p className='fw-bold lead mb-0'>Pie Chart</p>
-                <p>Top 10 addresses (without locked balance) displayed compared to all "others" addresses</p>
+                <p>Top 10 addresses (without locked balance) displayed compared to all "other" addresses</p>
                 <Chart options={options} series={series} type="pie" width="100%" />
               </div>
             </div>
@@ -253,7 +245,6 @@ function App() {
 
 
                 <div className='container rounded-3 border-start border-end border-top p-0 scroll-y address-container'>
-
 
 
                   {addresses.map((address) => {
@@ -306,7 +297,7 @@ function App() {
         <div className='col-lg-4'>
           <div className='container p-3 bg-white rounded-10 mb-3'>
             <p className='fw-bold lead mb-0 bg-loading text-transparent w-content'>Pie Chart</p>
-            <p className='bg-loading text-transparent w-content'>Top 10 addresses (without locked balance) displayed compared to all "others" addresses</p>
+            <p className='bg-loading text-transparent w-content'>Top 10 addresses (without locked balance) displayed compared to all "other" addresses</p>
             <div className='twitter-loading'></div>
           </div>
         </div>
