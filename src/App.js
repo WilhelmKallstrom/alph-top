@@ -150,34 +150,47 @@ function App() {
 
   };
 
+  function chunk(arr, len) {
+    var chunks = [];
+    var i = 0;
+    var n = arr.length;
+
+    while (i < n) {
+      chunks.push(arr.slice(i, i += len)); // gives [[0,1,2] [3,4,5]]
+    }
+
+    return chunks;
+  };
+
+
   fetch('https://alephium.ono.re/api/stats/addresses?top=356')
     .then(response => response.json())
     .then(data => {
+      fetch('https://mainnet-backend.alephium.org/infos/supply/total-alph')
+          .then(response => response.json())
+          .then(data2 => {
 
-  
-          totalAlph = data.total_balance
-          addresses = data.addresses
+            series = [] //reinit array until page load completely
+            totalAlph = data2 * 10**18
+            addresses = data.addresses
 
-          series = addresses.map(a => a.balance).slice(0, 10)
-          
-          
-          console.log(series)
+            //compute balance without locked ALPH
+            addresses.slice(0,10).forEach(element => {
+              let nonLockedBalance = element['balance']-element['locked']
+              series.push(nonLockedBalance)
+              topSum += nonLockedBalance
+            })
 
-          series.forEach(element => {
-            topSum += element / Math.pow(10,18)
+            othersSum = totalAlph - topSum
+
+            series.push(othersSum)
+
+            options.labels = ['#1', '#2', '#3', '#4', '#5', '#6', '#7', '#8', '#9', '#10', 'others']
+
+            setLoading(false)
+
+
           })
-          
-          othersSum = totalAlph - topSum
-
-         // othersSum = totalAlph - series.reduce((partialSum, a) => partialSum + a, 0)
-          
-          series.push(othersSum)
-
-          options.labels = ['#1', '#2', '#3', '#4', '#5', '#6', '#7', '#8', '#9', '#10', 'others']
-
-          setLoading(false)
-
-
     })
 
 
@@ -190,7 +203,7 @@ function App() {
             <div className='col-lg-4'>
               <div className='container p-3 bg-white rounded-10 mb-3'>
                 <p className='fw-bold lead mb-0'>Pie Chart</p>
-                <p>Top 10 addresses displayed in a pie chart compared to others "Currently not working, but i'm working on it"</p>
+                <p>Top 10 addresses (without locked balance) displayed compared to all "others" addresses</p>
                 <Chart options={options} series={series} type="pie" width="100%" />
               </div>
             </div>
@@ -262,7 +275,7 @@ function App() {
         <div className='col-lg-4'>
           <div className='container p-3 bg-white rounded-10 mb-3'>
             <p className='fw-bold lead mb-0 bg-loading text-transparent w-content'>Pie Chart</p>
-            <p className='bg-loading text-transparent w-content'>Top 10 addresses displayed in a pie chart compared to "others"</p>
+            <p className='bg-loading text-transparent w-content'>Top 10 addresses (without locked balance) displayed in a pie chart compared to all "others" addresses</p>
             <div className='twitter-loading'></div>
           </div>
         </div>
