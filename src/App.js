@@ -132,7 +132,7 @@ const genesisAddresses = [
 let addresses = []
 let series = []
 
-let options = { labels: [], colors:[]}
+let options = { labels: [], colors: [] }
 let hideGenesisAddresses = false;
 
 function App() {
@@ -221,6 +221,8 @@ function App() {
     return (
       <div>
 
+        <Navbar />
+
         <div className='container mt-4'>
           <div className='row'>
             <div className='col-lg-4'>
@@ -243,9 +245,7 @@ function App() {
                   </label>
                 </div>
 
-
                 <div className='container rounded-3 border-start border-end border-top p-0 scroll-y address-container'>
-
 
                   {addresses.map((address) => {
 
@@ -292,31 +292,38 @@ function App() {
   }
 
   return (
-    <div className='container mt-4'>
-      <div className='row'>
-        <div className='col-lg-4'>
-          <div className='container p-3 bg-white rounded-10 mb-3'>
-            <p className='fw-bold lead mb-0 bg-loading text-transparent w-content'>Pie Chart</p>
-            <p className='bg-loading text-transparent w-content'>Top 10 addresses (without locked balance) displayed compared to all "other" addresses</p>
-            <div className='twitter-loading'></div>
-          </div>
-        </div>
-        <div className='col-lg-8 order-sm-first'>
-          <div className='container p-3 bg-white rounded-10'>
-            <p className='fw-bold lead mb-0 bg-loading text-transparent w-content'>Top *** Addresses</p>
-            <p className='bg-loading text-transparent w-content mb-3'>Addresses with most ALPH</p>
-            <div className="form-check form-switch mb-3 w-content bg-loading">
-              <input className="form-check-input transparent" type="checkbox" role="switch"></input>
-              <label className="form-check-label text-transparent">
-                Hide genesis addresses
-              </label>
+
+    <div>
+
+      <Navbar />
+
+      <div className='container mt-4'>
+        <div className='row'>
+          <div className='col-lg-4'>
+            <div className='container p-3 bg-white rounded-10 mb-3'>
+              <p className='fw-bold lead mb-0 bg-loading text-transparent w-content'>Pie Chart</p>
+              <p className='bg-loading text-transparent w-content'>Top 10 addresses (without locked balance) displayed compared to all "other" addresses</p>
+              <div className='twitter-loading'></div>
             </div>
-            <div className='container border-start border-end border-top p-0'>
-              <div className='address-loading'></div>
+          </div>
+          <div className='col-lg-8 order-sm-first'>
+            <div className='container p-3 bg-white rounded-10'>
+              <p className='fw-bold lead mb-0 bg-loading text-transparent w-content'>Top *** Addresses</p>
+              <p className='bg-loading text-transparent w-content mb-3'>Addresses with most ALPH</p>
+              <div className="form-check form-switch mb-3 w-content bg-loading">
+                <input className="form-check-input transparent" type="checkbox" role="switch"></input>
+                <label className="form-check-label text-transparent">
+                  Hide genesis addresses
+                </label>
+              </div>
+              <div className='container border-start border-end border-top p-0'>
+                <div className='address-loading'></div>
+              </div>
             </div>
           </div>
         </div>
       </div>
+
     </div>
   )
 
