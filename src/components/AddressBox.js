@@ -136,7 +136,7 @@ function AddressBox(props) {
                         <p className="mb-0">{addresHint}</p>
                     </div>
                     <div className="col-lg">
-                        <p className="mb-0"><span className="bg-purple rounded-pill ps-2 pe-2">{verifiedAddress}</span></p>
+                        <p className="mb-0"><span className="bg-purple text-dark rounded-pill ps-2 pe-2">{verifiedAddress}</span></p>
                     </div>
                 </div>
             </div>
@@ -159,7 +159,7 @@ function AddressBox(props) {
                         <p className="mb-0">{addresHint}</p>
                     </div>
                     <div className="col-lg">
-                        <p className="mb-0"><span className="bg-green rounded-pill ps-2 pe-2">{verifiedAddress}</span></p>
+                        <p className="mb-0"><span className="bg-green text-dark rounded-pill ps-2 pe-2">{verifiedAddress}</span></p>
                     </div>
                 </div>
             </div>
@@ -180,7 +180,7 @@ function AddressBox(props) {
                 <p className="mb-0">{addresHint}</p>
             </div>
             <div className="col-lg">
-                <p className="mb-0"><span className="bg-light rounded-pill ps-2 pe-2">{verifiedAddress}</span></p>
+                <p className="mb-0"><span className="bg-label-dynamic rounded-pill ps-2 pe-2">{verifiedAddress}</span></p>
             </div>
         </div>
     </div>

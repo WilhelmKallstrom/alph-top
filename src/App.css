@@ -1,12 +1,44 @@
+:root {
+  --bg-body: #F6F6F6;
+  --color: #000000;
+  --bg-dynamic: #FFFFFF;
+
+  --bg-loading-1: #F0F0F0;
+  --bg-loading-2: #f9f9f9;
+
+  --border-color: #F0F0F0;
+
+  --bg-label-dynamic: #F6F6F6;
+
+}
+
 body {
-  background-color: #F6F6F6;
-  color: #000;
+  background-color: var(--bg-body);
+  color: var(--color);
   font-family: 'Inter', sans-serif;
 }
+
+.bg-label-dynamic{
+  background-color: var(--bg-label-dynamic) !important;
+}
+
+.navbar{
+  background-color: var(--bg-dynamic);
+}
+
+.navbar-brand{
+  color: var(--color) !important;
+}
+
+.bg-dynamic{
+  background-color: var(--bg-dynamic) !important;
+}
+
 
 .text-grey{
   color: #939DA6 !important;
 }
+
 
 
 .scroll-y{
@@ -29,21 +61,21 @@ body {
 
 @keyframes loading{
   0%{
-    background-color: #F0F0F0;
+    background-color: var(--bg-loading-1);
   }
 
   50%{
-    background-color: #f9f9f9;
+    background-color: var(--bg-loading-2);
   }
 
   100%{
-    background-color: #F0F0F0;
+    background-color: var(--bg-loading-1);
   }
 }
 
 
 .border {
-  border-color: #F0F0F0 !important;
+  border-color: var(--border-color) !important
 }
 
 a {
@@ -87,13 +119,18 @@ animation-iteration-count: infinite;
 animation-timing-function: linear;
 }
 
+.border-start{
+  border-color: var(--border-color) !important
+}
+
 .border-bottom {
-  border-color: #F0F0F0 !important;
+  border-color: var(--border-color) !important
 }
 
 .border-top {
-  border-color: #F0F0F0 !important;
+  border-color: var(--border-color) !important
 }
+
 
 .rt-5 {
   border-top-left-radius: 0.5rem !important;
@@ -149,7 +186,13 @@ animation-timing-function: linear;
   background-color: #1B1F24 !important;
 }
 
+.pie-container{
+  background-color: #3199F5 !important;
+}
 
+.bg-dark-mode{
+  background-color: #282828 !important;
+}
 
 .min-w-300 {
   min-width: 100px;

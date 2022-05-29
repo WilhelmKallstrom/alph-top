@@ -6,6 +6,7 @@ import { getAnalytics } from "firebase/analytics";
 import AddressBox from './components/AddressBox'
 import { useState } from 'react'
 import Navbar from './components/Navbar';
+import DarkModeSwitch from './components/DarkModeSwitch';
 // Import the functions you need from the SDKs you need
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -190,21 +191,6 @@ function App() {
 
           }
 
-
-
-
-
-          //New
-          /*
-          addresses.slice(0, 10).forEach(element => {
-            let nonLockedBalance = element['balance'] - element['locked']
-
-            series.push(nonLockedBalance)
-            topSum += nonLockedBalance
-          })
-          */
-
-
           othersSum = totalAlph - topSum
           series.push(othersSum)
 
@@ -213,7 +199,7 @@ function App() {
           setLoading(false)
         })
 
-    })
+    }).catch(error => alert('The API seems to be down. Try later again!'))
 
 
   if (!isLoading) {
@@ -226,7 +212,7 @@ function App() {
         <div className='container mt-4'>
           <div className='row'>
             <div className='col-lg-4'>
-              <div className='container p-3 bg-white rounded-10 mb-3'>
+              <div className='container p-3 bg-dynamic rounded-10 mb-3'>
                 <p className='fw-bold lead mb-0'>Pie Chart</p>
                 <p>Top 10 addresses (without locked balance) displayed compared to all "other" addresses</p>
                 <Chart options={options} series={series} type="pie" width="100%" />
@@ -234,7 +220,7 @@ function App() {
             </div>
 
             <div className='col-lg-8 order-sm-first'>
-              <div className='container p-3 bg-white rounded-10'>
+              <div className='container p-3 bg-dynamic rounded-10'>
                 <p className='fw-bold lead mb-0'>Top 256 Addresses</p>
                 <p className='mb-3'>Addresses with most ALPH</p>
 
@@ -281,9 +267,13 @@ function App() {
             </div>
           </div>
         </div>
-        <div className='container p-3 pt-5 pb-5'>
-          <p className='mb-0'>Made with ❤️ by <a className='text-decoration-none' href='https://github.com/WilhelmKallstrom' target='_blank'>Wilhelm Källström</a></p>
+        <div className='container d-flex justify-content-between p-3 pt-5 pb-5'>
+         <div>
+         <p className='mb-0'>Made with ❤️ by <a className='text-decoration-none' href='https://github.com/WilhelmKallstrom' target='_blank'>Wilhelm Källström</a></p>
           <p className='mb-0'>API provided by <a className='text-decoration-none' href='https://github.com/sven-hash/' target='_blank'>Svenhash</a></p>
+         </div>
+         
+        <DarkModeSwitch/>
         </div>
       </div>
 
@@ -300,14 +290,14 @@ function App() {
       <div className='container mt-4'>
         <div className='row'>
           <div className='col-lg-4'>
-            <div className='container p-3 bg-white rounded-10 mb-3'>
+            <div className='container p-3 rounded-10 mb-3 bg-dynamic'>
               <p className='fw-bold lead mb-0 bg-loading text-transparent w-content'>Pie Chart</p>
               <p className='bg-loading text-transparent w-content'>Top 10 addresses (without locked balance) displayed compared to all "other" addresses</p>
               <div className='twitter-loading'></div>
             </div>
           </div>
           <div className='col-lg-8 order-sm-first'>
-            <div className='container p-3 bg-white rounded-10'>
+            <div className='container p-3 rounded-10 bg-dynamic'>
               <p className='fw-bold lead mb-0 bg-loading text-transparent w-content'>Top *** Addresses</p>
               <p className='bg-loading text-transparent w-content mb-3'>Addresses with most ALPH</p>
               <div className="form-check form-switch mb-3 w-content bg-loading">
@@ -316,13 +306,22 @@ function App() {
                   Hide genesis addresses
                 </label>
               </div>
-              <div className='container border-start border-end border-top p-0'>
+              <div className='container p-0'>
                 <div className='address-loading'></div>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      <div className='container d-flex justify-content-between p-3 pt-5 pb-5 fixed-bottom'>
+         <div>
+         <p className='mb-0'>Made with ❤️ by <a className='text-decoration-none' href='https://github.com/WilhelmKallstrom' target='_blank'>Wilhelm Källström</a></p>
+          <p className='mb-0'>API provided by <a className='text-decoration-none' href='https://github.com/sven-hash/' target='_blank'>Svenhash</a></p>
+         </div>
+         
+        <DarkModeSwitch/>
+        </div>
 
     </div>
   )
