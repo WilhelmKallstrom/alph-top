@@ -12,6 +12,10 @@
 
 }
 
+.p-32{
+  font-size: 32px !important;
+}
+
 body {
   background-color: var(--bg-body);
   color: var(--color);

@@ -52,12 +52,12 @@ function DarkModeSwitch() {
     if (darkModeActive) {
 
         return (
-            <button className='p-0 display-6 bg-transparent border-0' onClick={ActivateDarkMode}>☀️</button>
+            <button className='bg-transparent border-0 p-32' onClick={ActivateDarkMode}>☀️</button>
         );
 
     } else {
         return (
-            <button className='p-0 display-6 bg-transparent border-0' onClick={ActivateDarkMode}>🌙</button>
+            <button className='bg-transparent border-0 p-32' onClick={ActivateDarkMode}>🌙</button>
         );
     }
 
